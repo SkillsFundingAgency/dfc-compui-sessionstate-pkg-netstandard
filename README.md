@@ -1,28 +1,50 @@
-# Project template repository
-
-This directory contains a "template repo" for creating new repositories from.
-
-It defaults to .dotnet core 2.2, but if you update global.json, it will support netcore 3.0 and 3.1.
-
-When using this,  please run
-
-`Scripts\New-InitialDotNetCoreProjects.ps1 -Prefix <project name> -ProjectType <project type>`
-
-to create the project structure and correctly populate the project guids in the csproj files.
-
-Supported project types are currently:
-
-* mvc
-* console
-* classlib
-* function
-
-Then delete this section, and remove the Scripts folder from the repo.
-
-Then it can be PR'd into the appropriate branch
-
-# SomeProjectName
+# Digital First Careers - Session State Mansgement
 
 ## Introduction
 
-An introduction to the project goes here!
+This Nuget provides a Session State service for the storage/retrieval in Cosmos.
+
+## Getting Started
+
+This is a self-contained Visual Studio 2019 solution containing a number of projects (Session State service and a unit test project) that is used to build a Nuget for consumption by Composite UI child apps.
+
+## Using this Nuget
+
+To use this Nuget in a Composite UI child app, add DFC.Compui.Sessionstate from Nuget. Then apply the following to your Composite Child app's startup class, ConfigureServices method:
+
+Simple Document Service use
+
+To register the Session State Nuget, add either of the following to the child app Startup class ConfigureServices method:
+
+```c#
+services.AddSessionStateServices<SessionDataModel>(cosmosDbConnectionSessionState, env.IsDevelopment());
+```
+
+To use of the Session State Nuget, inject the following in class constructors:
+
+```c#
+ISessionStateService<SessionDataModel> sessionStateService
+```
+
+Sample use of the Session State in code:
+
+```c#
+...
+var compositeSessionId = Request.CompositeSessionId();
+if (compositeSessionId.HasValue)
+{
+    var sessionStateModel = await sessionStateService.GetAsync(compositeSessionId.Value).ConfigureAwait(false);
+ 
+    sessionStateModel.State!.CurrentDatetime = DateTime.Now;
+    sessionStateModel.State!.Visits++;
+ 
+    var result = await sessionStateService.SaveAsync(sessionStateModel).ConfigureAwait(false);
+}
+...
+```
+
+
+## Built With
+
+* Microsoft Visual Studio 2019
+* .Net Standard 2.1

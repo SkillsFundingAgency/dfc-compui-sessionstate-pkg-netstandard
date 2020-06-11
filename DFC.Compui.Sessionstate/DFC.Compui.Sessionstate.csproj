@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ProjectGuid>{95156386-377D-4643-A8F0-0432F36AF5C0}</ProjectGuid>
+    <CodeAnalysisRuleSet>../DFC.Digital.CodeAnalysis.ruleset</CodeAnalysisRuleSet>
+    <Nullable>enable</Nullable>
+    <AssemblyName>DFC.Compui.Sessionstate</AssemblyName>
+    <OutputType>Library</OutputType>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.1.3</Version>
+    <Authors>Education and Skills Funding Agency Team</Authors>
+    <Company>Education and Skills Funding AgencyEducation and Skills Funding Agency Team</Company>
+    <Copyright>Copyright (c) 2020 Education and Skills Funding Agency Team</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/SkillsFundingAgency/dfc-compui-sessionstate-pkg-netstandard</RepositoryUrl>
+    <PackageTags>CompUI, SessionState</PackageTags>
+    <Description>Session state management by storing/retrieving from a Cosmos repository.
+For details on how to use this package see the ReadMe file that is part of this repository.</Description>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DFC.Compui.Cosmos" Version="0.1.3" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.4" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>
