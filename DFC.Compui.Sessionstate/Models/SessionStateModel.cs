@@ -9,7 +9,7 @@ namespace DFC.Compui.Sessionstate
     {
         [Required]
         [JsonProperty(Order = -10)]
-        public override string? PartitionKey { get; set; } = "session-state";
+        public override string? PartitionKey { get; set; } = Constants.DefaultPartitonKey;
 
         [JsonProperty(PropertyName = "ttl", Order = -10, NullValueHandling = NullValueHandling.Ignore)]
         public int? Ttl { get; set; }

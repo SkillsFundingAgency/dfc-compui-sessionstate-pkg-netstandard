@@ -17,7 +17,7 @@ namespace DFC.Compui.Sessionstate
 
         public async Task<SessionStateModel<TModel>> GetAsync(Guid compositeSessionId)
         {
-            var sessionStateModel = await documentService.GetByIdAsync(compositeSessionId).ConfigureAwait(false);
+            var sessionStateModel = await documentService.GetByIdAsync(compositeSessionId, Constants.DefaultPartitonKey).ConfigureAwait(false);
             if (sessionStateModel == null)
             {
                 sessionStateModel = new SessionStateModel<TModel>
