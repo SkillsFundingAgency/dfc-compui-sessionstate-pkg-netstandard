@@ -16,7 +16,7 @@ namespace DFC.Compui.Sessionstate.UnitTests.SessionStateServiceTests
             var expectedResult = A.Fake<SessionStateModel<TestSessionStateModel>>();
             var documentService = A.Fake<IDocumentService<SessionStateModel<TestSessionStateModel>>>();
 
-            A.CallTo(() => documentService.GetByIdAsync(A<Guid>.Ignored)).Returns(expectedResult);
+            A.CallTo(() => documentService.GetByIdAsync(A<Guid>.Ignored, A<string>.Ignored)).Returns(expectedResult);
 
             var sessionStateService = new SessionStateService<TestSessionStateModel>(documentService);
 
@@ -24,7 +24,7 @@ namespace DFC.Compui.Sessionstate.UnitTests.SessionStateServiceTests
             var result = sessionStateService.GetAsync(Guid.NewGuid()).Result;
 
             // assert
-            A.CallTo(() => documentService.GetByIdAsync(A<Guid>.Ignored)).MustHaveHappenedOnceExactly();
+            A.CallTo(() => documentService.GetByIdAsync(A<Guid>.Ignored, A<string>.Ignored)).MustHaveHappenedOnceExactly();
             A.Equals(result, expectedResult);
         }
 
@@ -35,7 +35,7 @@ namespace DFC.Compui.Sessionstate.UnitTests.SessionStateServiceTests
             SessionStateModel<TestSessionStateModel>? expectedResult = default;
             var documentService = A.Fake<IDocumentService<SessionStateModel<TestSessionStateModel>>>();
 
-            A.CallTo(() => documentService.GetByIdAsync(A<Guid>.Ignored)).Returns(expectedResult);
+            A.CallTo(() => documentService.GetByIdAsync(A<Guid>.Ignored, A<string>.Ignored)).Returns(expectedResult);
 
             var sessionStateService = new SessionStateService<TestSessionStateModel>(documentService);
 
@@ -43,7 +43,7 @@ namespace DFC.Compui.Sessionstate.UnitTests.SessionStateServiceTests
             var result = sessionStateService.GetAsync(Guid.NewGuid()).Result;
 
             // assert
-            A.CallTo(() => documentService.GetByIdAsync(A<Guid>.Ignored)).MustHaveHappenedOnceExactly();
+            A.CallTo(() => documentService.GetByIdAsync(A<Guid>.Ignored, A<string>.Ignored)).MustHaveHappenedOnceExactly();
             A.Equals(result, expectedResult);
         }
     }
