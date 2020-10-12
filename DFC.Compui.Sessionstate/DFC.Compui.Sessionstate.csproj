@@ -23,7 +23,7 @@ For details on how to use this package see the ReadMe file that is part of this 
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DFC.Compui.Cosmos" Version="1.0.57" />
+    <PackageReference Include="DFC.Compui.Cosmos" Version="1.0.61" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
