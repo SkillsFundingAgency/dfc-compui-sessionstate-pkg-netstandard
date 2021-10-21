@@ -1,4 +1,4 @@
-# Digital First Careers - Session State Mansgement
+# Digital First Careers - Session State Management
 
 ## Introduction
 
@@ -30,15 +30,15 @@ Sample use of the Session State in code:
 
 ```c#
 ...
-var compositeSessionId = Request.CompositeSessionId();
-if (compositeSessionId.HasValue)
+varÂ compositeSessionIdÂ =Â Request.CompositeSessionId();
+ifÂ (compositeSessionId.HasValue)
 {
-    var sessionStateModel = await sessionStateService.GetAsync(compositeSessionId.Value).ConfigureAwait(false);
+Â Â Â Â varÂ sessionStateModelÂ =Â awaitÂ sessionStateService.GetAsync(compositeSessionId.Value).ConfigureAwait(false);
  
-    sessionStateModel.State!.CurrentDatetime = DateTime.Now;
-    sessionStateModel.State!.Visits++;
+Â Â Â Â sessionStateModel.State!.CurrentDatetimeÂ =Â DateTime.Now;
+Â Â Â Â sessionStateModel.State!.Visits++;
  
-    var result = await sessionStateService.SaveAsync(sessionStateModel).ConfigureAwait(false);
+Â Â Â Â varÂ resultÂ =Â awaitÂ sessionStateService.SaveAsync(sessionStateModel).ConfigureAwait(false);
 }
 ...
 ```
