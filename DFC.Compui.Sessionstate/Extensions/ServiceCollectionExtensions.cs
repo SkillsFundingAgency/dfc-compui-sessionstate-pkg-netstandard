@@ -16,7 +16,8 @@ namespace DFC.Compui.Sessionstate
         {
             _ = cosmosDbConnection ?? throw new ArgumentNullException(nameof(cosmosDbConnection));
 
-            var documentClient = new DocumentClient(cosmosDbConnection!.EndpointUrl, cosmosDbConnection!.AccessKey);
+            var retryOptions = new RetryOptions { MaxRetryAttemptsOnThrottledRequests = 20, MaxRetryWaitTimeInSeconds = 60 };
+            var documentClient = new DocumentClient(cosmosDbConnection!.EndpointUrl, cosmosDbConnection!.AccessKey, new ConnectionPolicy { RetryOptions = retryOptions });
             object[] serviceArguments = { cosmosDbConnection, documentClient, isDevelopment };
 
             services.AddSingleton(cosmosDbConnection);
